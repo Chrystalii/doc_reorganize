@@ -66,12 +66,15 @@ def move_docs_and_rename(dirname,file_extension_list,file_fullname_list,file_nam
             try:
                 tar_path = os.path.join(current_path, extensions)
                 src_path=os.path.join(current_path,dirname+fullnames.split(dirname)[-1])
+                # print(tar_path,src_path)
                 copied_path=shutil.copy(src_path,tar_path)
-
-                alter_name = fullnames.lstrip('../data').replace('/', '.')
+                alter_name = src_path.replace('\\', '.')
+                # print(fullnames)
+                print(alter_name)
+                # # print(fullnames,alter_name)
                 alter_path = os.path.join(tar_path, alter_name)
-                print(copied_path)
                 print(alter_path)
+                print(copied_path)
                 try:
                     os.rename(copied_path,alter_path)
                 except FileNotFoundError :
